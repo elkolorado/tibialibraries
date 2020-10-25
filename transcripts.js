@@ -55,7 +55,7 @@ function gotData2(data2) {
 }
 
 // load book ids
-var allbooksurl = 'https://cors-anywhere.herokuapp.com/https://tibia.fandom.com/api/v1/Articles/List?expand=0&format=json&category=Book_Texts&limit=90000';
+var allbooksurl = 'https://cors-anywhere.herokuapp.com/https://tibia.fandom.com/api/v1/Articles/List?expand=0&format=json&category=Transcripts&limit=90000';
 function preload() {
     txt = loadJSON(allbooksurl, gotData2);
 }
