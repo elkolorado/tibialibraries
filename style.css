@@ -10,6 +10,14 @@ mark{
     color: white !important;
 }
 
+.link { color: #BFBFBF;
+text-decoration: none;}
+
+.link:hover {
+  color: #BFBFBF;
+  text-decoration: underline;
+}
+
 .card-text {
   background: #363636 !important;
   border-left: 1px solid #1e1e1e;
