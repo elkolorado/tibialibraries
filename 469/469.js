@@ -73,7 +73,7 @@ $('#submit2').click(function(){
 })
 
 async function getBooks(){
-  const response = await fetch("books.json");
+  const response = await fetch("469/books.json");
   const result = await response.json();
   return result;
 }
