@@ -73,7 +73,7 @@ $('#submit2').click(function(){
 })
 
 async function getBooks(){
-  const response = await fetch("books.json");
+  const response = await fetch("https://github.dev/elkolorado/tibialibraries/blob/892b3904137dc8dfa3d69743e0b712d27bebe6ba/469/books.json");
   const result = await response.json();
   return result;
 }
