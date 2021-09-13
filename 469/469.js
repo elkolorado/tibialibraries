@@ -153,7 +153,7 @@ $("#out-dig").append(`</br><button id="highlightall">Highlight all matches (more
 $('#output').html("");
 
 val2.filter(i => !i.includes("n")).filter(i=>!i.includes("\\")).forEach(i => {
-  $('#output').append(`<span class="markme ndigit" onclick="spanH(this)">${i}</span><span>, </span>`);
+  $('#output').append(`<span class="markme ndigit" title="Occurences: ${occurences(i)}" onclick="spanH(this)">${i}</span><span>, </span>`);
 });
 
 
@@ -201,11 +201,14 @@ $('.markme').on("click", function(e) {
 }
 
 
+function occurences(i){
+  var regex = new RegExp( i, "g");
+  return (books_text.match(regex) || []).length
 
+}
 function spanH(thisa){
   this2 = $(thisa);
-  var regex = new RegExp( this2.text(), "g");
-  console.log((books_text.match(regex) || []).length)
+
   $('.highlighted').removeClass();
   this2.addClass("highlighted");
 }
