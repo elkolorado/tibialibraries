@@ -149,7 +149,7 @@ document.getElementById("out-dig").innerHTML = "Search for "+b+"-digit sequences
 
 
 
-$("#out-dig").append(`</br><button id="highlightall">Highlight all matches (more results = longer)</button>`);
+$("#out-dig").append(`</br><button id="highlightall">Highlight all matches (more results = longer)</button><button onclick="animateSequences()">Animate the result</button>`);
 $('#output').html("");
 
 val2.filter(i => !i.includes("n")).filter(i=>!i.includes("\\")).forEach(i => {
@@ -200,6 +200,14 @@ $('.markme').on("click", function(e) {
 
 }
 
+function animateSequences(){
+  $("#output span").each(function(index) {
+    var g = $(this);
+    setTimeout(function(){
+    g.click();
+    }, index * 15)
+    })
+}
 
 function occurences(i){
   var regex = new RegExp( i, "g");
