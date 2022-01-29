@@ -2,13 +2,13 @@ $(document).ready(function(){
 
 let mapData = []
 async function getMap(url){
-    let request = await fetch('/locate/' + url);
+    let request = await fetch('/tibialibraries/locate/' + url);
     let response = await request.text()
     return response.split('\n')
 }
 
 async function getIds(url){
-  let request = await fetch('/locate/' + url);
+  let request = await fetch('/tibialibraries/locate/' + url);
   let response = await request.json()
   return response
 }
