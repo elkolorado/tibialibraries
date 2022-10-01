@@ -1,61 +1,53 @@
-var spacedata;
-var surowy;
-var tytul;
-var firstvariable = '<blockquote class="book">';
-var secondvariable = '</blockquote>';
-var calosc;
-var wikialink;
-var wikia = 'http://tibia.wikia.com/api.php?format=json&prop=text&action=parse&pageid=';
 
-// create title, url and txt from book
-var teksty = [];
-var tekstyfail = [];
-function gotData(data) {
-    spacedata = data;
-    console.log(spacedata);
-    surowy = spacedata.parse.text["*"];
-    someText = surowy;
-    var regex = RegExp(/(?<=blockquote class="book".)(.*)(?=<.blockquote)/gus);
-    testRE = someText.match(regex);
-    calosc = testRE[0];
-    tytul = spacedata.parse.title;
-    tytuly = 'http://tibia.wikia.com/wiki/' + tytul;
-    wikialink = tytuly.replace(/\s/g, "_");
-    teksty.push({
-        title: tytul,
-        url: wikialink,
-        txt: calosc,
-    });
+async function getBookData(url) {
+    const request = await fetch(url)
+    const response = await request.json()
+    return response
+
 }
 
-
-// loop through all books
-function allBook() {
-    for (var i = 0; i <= url2.length; i++) {
-        loadJSON(url2[i], gotData, 'jsonp', );
+async function loadBooks(offset, results = []) {
+    const allBooksUrl = 'https://tibia.fandom.com/api/v1/Articles/List?expand=0&format=json&category=Book_Texts&limit=90000' + (offset ? `&offset=${offset}` : '')
+    const request = await fetch(allBooksUrl)
+    const result = await request.json()
+    results = [...results, ...prepareUrls(result.items)]
+    if (result.offset) {
+        const next = await loadBooks(result.offset, results);
+        return next
     }
+    return results
 }
 
-
-
-
-// create link to api for each book while using id
-var url2 = [];
-function setup() {
-    noCanvas();
-    for (var i = 0; i < spacedata2.items.length; i++) {
-        url2.push(wikia + spacedata2.items[i].id);
-            }
+function prepareUrls(data) {
+    const wikia = 'https://tibia.fandom.com/api.php?format=json&prop=text&action=parse&pageid='
+    return data.map(item => wikia + item.id)
 }
 
-
-// below helper for data
-function gotData2(data2) {
-    spacedata2 = data2;
+async function init() {
+    let books = []
+    let bookIndex = 0
+    const bookUrls = await loadBooks()
+    for (const url of bookUrls) {
+        const book = await getBookData(url)
+        const regex = RegExp(/(?<=blockquote class="book".)(.*)(?=<.blockquote)/gus)
+        const data = book.parse.text["*"]
+        books.push({
+            title: book.parse.title,
+            url: 'http://tibia.fandom.com/wiki/' + book.parse.title.replace(/\s/g, "_"),
+            txt: data.match(regex)[0]
+        })
+        console.log(`${bookIndex++}/${bookUrls.length}`, url, book.parse.title)
+    }
+    saveAsJSON(books, 'books.json')
+    return books
 }
 
-// load book ids
-var allbooksurl = 'https://cors-anywhere.herokuapp.com/https://tibia.fandom.com/api/v1/Articles/List?expand=0&format=json&category=Book_Texts&limit=90000';
-function preload() {
-    txt = loadJSON(allbooksurl, gotData2);
+function saveAsJSON(data, name = Date.now() + '.json') {
+    const a = document.createElement('a')
+    a.download = name
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(data)], { type: 'application/json' }))
+    a.click()
 }
+
+//to init
+// init()
