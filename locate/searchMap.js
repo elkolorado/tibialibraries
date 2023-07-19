@@ -23,12 +23,14 @@ function findInMap(id){
   mapData.forEach(line => {
     line.split('Content={')[1]?.includes(id) && found.push(line.split(':')[0]) 
   })
-  if (found.length > 40){
-    alert(`This item is common, it exist more than 40 times. For now this functionality is disabled, but will be resolved in future with padding. Please find other item that exist in lesser quantity. \n\nLocations of that item has been copied to your clipboard.`)
-    navigator.clipboard.writeText(found.join('\n'))
+  if (found.length > 300){
+    alert(`This item is common, it exist more than 300 times. For now this functionality is disabled, but will be resolved in future with padding. Please find other item that exist in lesser quantity. \n\nLocations of that item has been copied to your clipboard, are in your console as well.`)
+    navigator.clipboard.writeText(found.join('\n'));
+    console.log(found);
+    console.log(found.join('\n'));
   } else {
     found.forEach(item => {
-      let location = `<div class="col"><iframe src="https://tibiamaps.io/map/embed#${item}:1" style="width: 1000px; height: 500px;"></div>`;
+      let location = `<div class="col"><iframe src="https://tibiamaps.io/map/embed#${item}:1" loading="lazy" style="width: 1000px; height: 500px;"></div>`;
       $('#location').append(location);
     })
   }
