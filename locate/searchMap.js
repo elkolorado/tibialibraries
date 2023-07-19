@@ -43,7 +43,7 @@ getMap('file.txt').then(res => {
 
 getIds('objects.json').then(res => {
   res.forEach(id => {
-    $('#ids').append(`<option value='${id.name}' data-id='${id.id}'>${id.name} (${id.id})</option>`)
+    $('#ids').append(`<option value='${id.name} (${id.id})' data-id='${id.id}'>${id.name} (${id.id})</option>`)
   })
 
   const params = new URLSearchParams(window.location.search)
