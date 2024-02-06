@@ -59,7 +59,7 @@
                 continuousWorld: false,
                 noWrap: true,
                 maxNativeZoom: 1,
-            }).addTo(map);
+            });
 
             layers['Map ' + i] = customLayer;
 
@@ -67,6 +67,9 @@
 
         var layerControl = L.control.layers(layers).addTo(map);
         layerControl.setPosition('topleft');  
+
+        // Set the "All floors" layer as the default view
+        map.addLayer(mergedLayer);
     </script>
 </body>
 
