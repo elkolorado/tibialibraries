@@ -39,7 +39,7 @@
 
         var layers = {};
 
-        var tileUrl = 'https://github.com/elkolorado/Tibia-Satellite-Cyclopedia-Map-Export/blob/main/leaflet/merged/map_merged_{x}_{y}.png';
+        var tileUrl = '/tibialibraries/cyclopediamap/merged/map_merged_{x}_{y}.png';
 
         var mergedLayer = L.tileLayer(tileUrl, {
             continuousWorld: false,
@@ -50,7 +50,7 @@
         layers["All floors"] = mergedLayer
 
 
-        var layersUrl = 'https://github.com/elkolorado/Tibia-Satellite-Cyclopedia-Map-Export/blob/main/leaflet/layered/map_{z}_{x}_{y}.png';
+        var layersUrl = '/tibialibraries/cyclopediamap/layered/map_{z}_{x}_{y}.png';
 
 
         for (var i = 7; i >= 0; i--) {
