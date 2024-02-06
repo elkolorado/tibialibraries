@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Tibia Cyclopedia Satellite Map Viewer</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 100vh;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V4SMSD7LGN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-V4SMSD7LGN');
+</script>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = new L.map('map', {
+            center: [-128 * 4, 128 * 4],
+            zoom: 1,
+            maxZoom: 11,
+            minZoom: 1,
+            crs: L.CRS.Simple
+        });
+
+
+        var layers = {};
+
+        var tileUrl = 'https://github.com/elkolorado/Tibia-Satellite-Cyclopedia-Map-Export/blob/main/leaflet/merged/map_merged_{x}_{y}.png';
+
+        var mergedLayer = L.tileLayer(tileUrl, {
+            continuousWorld: false,
+            noWrap: true,
+            maxNativeZoom: 1,
+        }).addTo(map);
+
+        layers["All floors"] = mergedLayer
+
+
+        var layersUrl = 'https://github.com/elkolorado/Tibia-Satellite-Cyclopedia-Map-Export/blob/main/leaflet/layered/map_{z}_{x}_{y}.png';
+
+
+        for (var i = 7; i >= 0; i--) {
+
+            var customLayer = L.tileLayer(layersUrl.replace('{z}', i), {
+                continuousWorld: false,
+                noWrap: true,
+                maxNativeZoom: 1,
+            }).addTo(map);
+
+            layers['Map ' + i] = customLayer;
+
+        }
+
+        var layerControl = L.control.layers(layers).addTo(map);
+        layerControl.setPosition('topleft');  
+    </script>
+</body>
+
+</html>
