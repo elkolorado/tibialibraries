@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tibia 3D Globe</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="module">
+
+        const prod_prefix = '/tibialibraries/';
+
+        let mapUrl = '';
+
+        if (window.location.href.includes('localhost') || window.location.href.includes('127')) {
+            mapUrl = '/cyclopediamap/map_merged.png';
+        } else {
+            mapUrl = prod_prefix + 'cyclopediamap/map_merged.png';
+        }
+
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
+
+        import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+
+        // Create a scene
+        const scene = new THREE.Scene();
+
+        // Create a camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Create a renderer
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create a geometry for the globe
+        const geometry = new THREE.SphereGeometry(2, 32, 32);
+
+        // Create a material for the globe
+        const texture = new THREE.TextureLoader().load(mapUrl);
+        const material = new THREE.MeshBasicMaterial({ map: texture });
+
+        // Create a mesh using the geometry and material
+        const globe = new THREE.Mesh(geometry, material);
+
+        // Add the globe to the scene
+        scene.add(globe);
+
+        let isInteracting = false;
+        let setTimeoutId;
+        // Add event listeners for user interaction
+        window.addEventListener('click', () => {
+            console.log('clicked');
+            isInteracting = true;
+
+            if (setTimeoutId) {
+                clearTimeout(setTimeoutId);
+            }
+            setTimeoutId = setTimeout(() => {
+                isInteracting = false;
+            }, 5000);
+
+        });
+
+
+        // Render the scene with the camera
+        function animate() {
+            requestAnimationFrame(animate);
+            if (!isInteracting) {
+                globe.rotation.y += 0.001;
+            }
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // add mouse controls to the globe
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.25;
+        controls.enableZoom = true;        
+    </script>
+</body>
+
+</html>
