@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar-expand-lg sticky-top navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#">Strange Carvings</a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#loc">Carving locations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#map">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#screens">Screens</a>
+                    </li>
+                </ul>
+                <div class="position-relative top-0 end-0 z-3 d-flex align-items-center">
+                    <p style="font-family: monospace;" class="m-0 text-end"><a class="text-white"
+                            href="https://discord.com/users/290330173650370563" target="_blank">elkolorado#4566</a></p>
+                    <a href="https://github.com/elkolorado/tibialibraries" target="_blank" type="button" class="btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-github"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+
+        <h1 class="mt-5" id="loc">Carvings locations</h1>
+        <button class="btn btn-primary mb-4"><a href="" id="carvingsdata" class="text-white" target="_blank">download
+                carvings.json</a></button>
+
+        <div class="row row-cols-2">
+            <div class="col">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                            data-bs-target="#all-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                            aria-selected="true">All</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#one-tab-pane"
+                            type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><img src="596.gif" width="20" class="me-2 mb-1" height="20">596</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#two-tab-pane"
+                            type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false"><img src="597.gif" width="20" class="me-2 mb-1" height="20">597</button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#three-tab-pane"
+                            type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false"><img src="598.gif" width="20" class="me-2 mb-1" height="20">598</button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#four-tab-pane"
+                            type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false"><img src="599.gif" width="20" class="me-2 mb-1" height="20">599</button>
+                    </li>
+
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                        tabindex="0">
+                        <ul class="list-group" style="max-height: 300px; overflow: auto;">
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="one-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                        tabindex="0">
+                        <ul class="list-group" style="max-height: 300px; overflow: auto;">
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="two-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                        tabindex="0">
+                        <ul class="list-group" style="max-height: 300px; overflow: auto;">
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="three-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                        tabindex="0">
+                        <ul class="list-group" style="max-height: 300px; overflow: auto;">
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="four-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                        tabindex="0">
+                        <ul class="list-group" style="max-height: 300px; overflow: auto;">
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="ratio ratio-16x9">
+                    <iframe id="tibiamaps" src="" class="embed-responsive-item"></iframe>
+
+                </div>
+            </div>
+        </div>
+
+
+        <h1 class="mt-5" id="map">Strange carvings map</h1>
+        <img src="" alt="" id="carvingsmap">
+        <h1 class="mt-5" id="screens">Strange carvings ingame</h1>
+
+        <script>
+            const prod_prefix = '/tibialibraries/carvings/';
+            const url_prefix = window.location.href.includes('localhost') || window.location.href.includes('127') ? '' : prod_prefix;
+
+            document.querySelector('#carvingsdata').href = url_prefix + 'carvings.json';
+            document.querySelector('#carvingsmap').src = url_prefix + 'carvings_map.png';
+            //read carvings.json, and display it as imgs in the page
+            fetch('carvings_satellite_paths.json')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(carving => {
+                        console.log(carving)
+                        let div = document.createElement('div');
+                        div.classList.add('d-flex');
+
+                        const img = document.createElement('img');
+                        img.src = url_prefix + carving;
+                        img.classList.add('mx-auto');
+                        div.appendChild(img);
+                        document.body.appendChild(div);
+                    });
+                });
+
+            fetch('carvings.json')
+                .then(response => response.json())
+                .then(data => {
+                    let allCarvings = data.map(x => x.coords).flat();
+                    let carvings596 = data.filter(x => x.id == 596).map(x => x.coords).flat();
+                    let carvings597 = data.filter(x => x.id == 597).map(x => x.coords).flat();
+                    let carvings598 = data.filter(x => x.id == 598).map(x => x.coords).flat();
+                    let carvings599 = data.filter(x => x.id == 599).map(x => x.coords).flat();
+
+                    let allTabPane = document.querySelector('#all-tab-pane');
+                    let tab596 = document.querySelector('#one-tab-pane');
+                    let tab597 = document.querySelector('#two-tab-pane');
+                    let tab598 = document.querySelector('#three-tab-pane');
+                    let tab599 = document.querySelector('#four-tab-pane');
+
+                    // <ul class="list-group">
+                    //     <li class="list-group-item">
+                    //         <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                    //             <label class="form-check-label" for="firstRadio">First radio</label>
+                    //     </li>
+                    // </ul>
+                    createCoordsList(allCarvings, allTabPane, allCarvings);
+                    createCoordsList(carvings596, tab596, carvings596);
+                    createCoordsList(carvings597, tab597, carvings597);
+                    createCoordsList(carvings598, tab598, carvings598);
+                    createCoordsList(carvings599, tab599, carvings599);
+
+
+                });
+
+            function createCoordsList(coords, pane, group) {
+                group.forEach(coords => {
+                    let li = document.createElement('li');
+                    li.classList.add('list-group-item');
+                    li.classList.add('list-group-item-action');
+                    let input = document.createElement('input');
+                    input.classList.add('form-check-input', 'me-1');
+                    input.addEventListener('click', () => {
+                        //reload iframe
+                        document.querySelector('#tibiamaps').src = '';
+                        document.querySelector('#tibiamaps').src = `https://tibiamaps.io/map/embed#${coords}:1`;
+                    });
+                    input.type = 'radio';
+                    input.name = pane.id;
+                    input.value = '';
+                    input.id = pane.id + coords;
+                    let label = document.createElement('label');
+                    label.classList.add('form-check-label');
+                    label.htmlFor = pane.id + coords;
+                    label.innerText = coords;
+                    li.appendChild(input);
+                    li.appendChild(label);
+                    pane.querySelector('ul').appendChild(li);
+                });
+            }
+        </script>
+        <style>
+            /* scroll offset top */
+            h1 {
+                scroll-margin-top: 4rem;
+            }
+        </style>
+    </div>
+
+</body>
+
+</html>
